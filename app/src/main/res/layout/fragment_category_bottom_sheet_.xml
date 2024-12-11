@@ -8,12 +8,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_15sdp"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"    android:paddingBottom="@dimen/_100sdp"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_100sdp"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_image_background">
+            android:background="@color/white">
 
             <!-- Title of the BottomSheet -->
             <TextView

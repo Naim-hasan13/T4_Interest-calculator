@@ -158,10 +158,16 @@ class HomeActivity : AppCompatActivity() {
 
 
         }
-
         binding.cvTheme.setOnClickListener {
-            binding.screenshot.background = ContextCompat.getDrawable(this, bgList.random())
+            // Randomly select an image from bgList
+            val randomBackground = bgList.random()
+
+            // Apply the same background image to both 'screenshot' and 'main'
+            binding.screenshot.background = ContextCompat.getDrawable(this, randomBackground)
+            binding.main.background = ContextCompat.getDrawable(this, randomBackground)
         }
+
+
 
         binding.cvSettings.setOnClickListener {
 

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
@@ -10,9 +11,9 @@
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:elevation="@dimen/_1sdp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
+        android:elevation="@dimen/_1sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +23,11 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_Categories"
             android:layout_width="wrap_content"
-            app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
-            app:cardBackgroundColor="#8BFFFFFF">
+            app:cardBackgroundColor="#8BFFFFFF"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +37,8 @@
                 android:padding="@dimen/_5sdp">
 
                 <ImageView
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
+                    android:layout_width="@dimen/_19sdp"
+                    android:layout_height="@dimen/_19sdp"
                     android:src="@drawable/categories" />
 
                 <TextView
@@ -46,7 +47,7 @@
                     android:layout_marginStart="@dimen/_5sdp"
                     android:text="Categories"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_11ssp" />
 
             </LinearLayout>
 
@@ -54,17 +55,17 @@
 
         <Space
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_theme"
-            app:strokeWidth="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
-            app:cardBackgroundColor="#8BFFFFFF">
+            app:cardBackgroundColor="#8BFFFFFF"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,8 +75,8 @@
                 android:padding="@dimen/_5sdp">
 
                 <ImageView
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
+                    android:layout_width="@dimen/_19sdp"
+                    android:layout_height="@dimen/_19sdp"
                     android:src="@drawable/theme" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -85,11 +86,11 @@
             android:id="@+id/cv_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:strokeWidth="0dp"
-            android:layout_marginEnd="@dimen/_15sdp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
-            app:cardBackgroundColor="#8BFFFFFF">
+            android:layout_marginEnd="@dimen/_15sdp"
+            app:cardBackgroundColor="#8BFFFFFF"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,30 +100,31 @@
                 android:padding="@dimen/_5sdp">
 
                 <ImageView
-                    android:layout_width="@dimen/_15sdp"
+                    android:layout_width="@dimen/_19sdp"
 
-                    android:layout_height="@dimen/_15sdp"
+                    android:layout_height="@dimen/_19sdp"
                     android:src="@drawable/settings" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-<RelativeLayout
-    android:id="@+id/screenshot"
-    android:layout_width="match_parent"
-    android:background="@drawable/bg"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_height="0dp"
-    >
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <RelativeLayout
+        android:id="@+id/screenshot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
 
-        tools:layout_editor_absoluteX="0dp" />
-</RelativeLayout>
+            tools:layout_editor_absoluteX="0dp" />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,12 +140,12 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_share"
             android:layout_width="wrap_content"
-            app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
             app:cardBackgroundColor="#8BFFFFFF"
-            app:cardCornerRadius="@dimen/_20sdp">
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,11 +166,11 @@
             android:id="@+id/cv_love"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:strokeWidth="0dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_20sdp"
             app:cardBackgroundColor="#8BFFFFFF"
-            app:cardCornerRadius="@dimen/_20sdp">
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
