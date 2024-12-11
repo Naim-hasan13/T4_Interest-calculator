@@ -1,13 +1,28 @@
 package com.quotes.hindcash
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.quotes.hindcash.databinding.ActivityHomeBinding
+import java.io.File
+import java.io.FileOutputStream
 
 class HomeActivity : AppCompatActivity() {
 
+    private val bgList = listOf(R.drawable.logo, R.drawable.theme_bg1, R.drawable.love)
     private lateinit var binding: ActivityHomeBinding
     private val shayariList = listOf(
         Shayari("Roses are red, violets are blue, Shayari is here, just for you."),
@@ -105,8 +120,15 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
 
         // Set up the ViewPager2 with ShayariAdapter
         val adapter = ShayariAdapter(shayariList)
@@ -115,20 +137,58 @@ class HomeActivity : AppCompatActivity() {
 
         // Handle Share button click in HomeActivity
         binding.cvShare.setOnClickListener {
-            shareCurrentShayari()
+            shareImage()
+        }
+
+        binding.cvTheme.setOnClickListener {
+
+            binding.screenshot.background = ContextCompat.getDrawable(this, bgList.random())
+        }
+        binding.cvCategories.setOnClickListener {
+
+        }
+        binding.cvSettings.setOnClickListener {
+
         }
     }
 
-    private fun shareCurrentShayari() {
-        // Get the current Shayari text
-        val currentItemPosition = binding.viewPager.currentItem
-        val shayariText = shayariList[currentItemPosition].text
+    private fun shareImage() {
+        // Find the RelativeLayout with all overlays
+        val screenshotLayout = binding.screenshot
 
-        // Share the Shayari text
-        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, shayariText)
+        // Create a Bitmap from the view
+        val bitmap = Bitmap.createBitmap(
+            screenshotLayout.width,
+            screenshotLayout.height,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        screenshotLayout.draw(canvas)
+
+        // Save the bitmap to a temporary file
+        try {
+            val file = File(applicationContext.cacheDir, "shared_image.jpg")
+            val outputStream = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            outputStream.flush()
+            outputStream.close()
+
+            // Share the image using an Intent
+            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
+
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "image/jpeg"
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+
+            startActivity(Intent.createChooser(shareIntent, "Share Image"))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "Failed to share image", Toast.LENGTH_SHORT).show()
         }
-        startActivity(Intent.createChooser(shareIntent, "Share Shayari via"))
     }
+
+
 }
