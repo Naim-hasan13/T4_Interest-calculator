@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- First layer: Image as background -->
+    <item>
+        <bitmap
+            android:gravity="center|fill"
+            android:src="@drawable/bg"
+            android:tileMode="clamp" />
+    </item>
+
+    <!-- Second layer: Rounded corners background -->
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="#00FFFFFF" /> <!-- Set the background color -->
+            <corners
+                android:topLeftRadius="@dimen/_10sdp"
+                android:topRightRadius="@dimen/_10sdp" /> <!-- Round top corners -->
+        </shape>
+    </item>
+</layer-list>
