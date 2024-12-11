@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/logo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:id="@+id/cv_Categories"
+            app:cardBackgroundColor="#8BFFFFFF"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/categories"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categories"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Space
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:id="@+id/cv_theme"
+            app:cardBackgroundColor="#8BFFFFFF"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/theme"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:id="@+id/cv_settings"
+            app:cardBackgroundColor="#8BFFFFFF"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/settings"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_50sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content">
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:id="@+id/cv_share"
+            app:cardBackgroundColor="#8BFFFFFF"
+            app:cardCornerRadius="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:src="@drawable/share"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:id="@+id/cv_love"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardBackgroundColor="#8BFFFFFF"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/love"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
