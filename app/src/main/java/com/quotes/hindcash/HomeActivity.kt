@@ -3,10 +3,6 @@ package com.quotes.hindcash
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,7 +18,7 @@ import java.io.FileOutputStream
 
 class HomeActivity : AppCompatActivity() {
 
-    private val bgList = listOf(R.drawable.logo, R.drawable.theme_bg1, R.drawable.love)
+    private val bgList = listOf(R.drawable.bg, R.drawable.theme_bg1, R.drawable.theme_bg2,R.drawable.theme_bg3, R.drawable.theme_bg4, R.drawable.theme_bg5,R.drawable.theme_bg6, R.drawable.theme_bg7, R.drawable.theme_bg8 ,R.drawable.theme_bg9, R.drawable.theme_bg10)
     private lateinit var binding: ActivityHomeBinding
     private val shayariList = listOf(
         Shayari("Roses are red, violets are blue, Shayari is here, just for you."),

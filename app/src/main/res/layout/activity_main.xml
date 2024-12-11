@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
-    android:background="@drawable/logo"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_width="match_parent"
