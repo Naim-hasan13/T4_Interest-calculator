@@ -16,8 +16,9 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_category_bottom_sheet_, container, false)
     }
+}
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val dialog = dialog
         if (dialog != null) {
@@ -29,7 +30,7 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
             window?.setWindowAnimations(android.R.style.Animation_Dialog)
         }
         // Set up your view interactions here, for example:
-        val categoryItem1 = view.findViewById<View>(R.id.categoryItem1)
+      //  val categoryItem1 = view.findViewById<View>(R.id.categoryItem1)
         val categoryItem2 = view.findViewById<View>(R.id.categoryItem2)
         val categoryItem3 = view.findViewById<View>(R.id.categoryItem3)
 
@@ -46,3 +47,5 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 }
+
+    */

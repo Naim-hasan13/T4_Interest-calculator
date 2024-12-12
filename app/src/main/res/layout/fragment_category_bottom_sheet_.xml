@@ -9,6 +9,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         app:cardCornerRadius="@dimen/_15sdp"
+        app:strokeWidth="0dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -20,13 +21,14 @@
 
             <!-- Title of the BottomSheet -->
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/bottomSheetTitle"
                 android:layout_width="wrap_content"
 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25sdp"
                 android:text="Select Category"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_17ssp"
                 android:textStyle="bold"
           />
 
@@ -45,9 +47,9 @@ android:layout_gravity="center_horizontal"
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_General"
-                android:layout_width="@dimen/_120sdp"
+                android:layout_width="@dimen/_130sdp"
                 android:layout_weight="1"
-                android:layout_height="@dimen/_120sdp"
+                android:layout_height="@dimen/_130sdp"
                 app:strokeWidth="0dp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 tools:layout_editor_absoluteX="50dp">
@@ -55,7 +57,7 @@ android:layout_gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/bg"
+    android:background="@drawable/general"
     android:gravity="center_vertical">
 
 
@@ -74,8 +76,8 @@ android:layout_gravity="center_horizontal"
             </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/tv_Reducing_anxiety"
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_120sdp"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_130sdp"
                     app:strokeWidth="0dp"
                     android:layout_weight="1"
                     android:layout_marginStart="@dimen/_10sdp"
@@ -103,6 +105,7 @@ android:layout_gravity="center_horizontal"
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tv_Personal_growth"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
@@ -117,6 +120,7 @@ android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_80sdp"
                 android:orientation="horizontal"
               >
 
@@ -124,9 +128,9 @@ android:layout_gravity="center_horizontal"
 
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="@dimen/_120sdp"
+                    android:layout_width="@dimen/_130sdp"
 android:layout_weight="1"
-                    android:layout_height="@dimen/_120sdp"
+                    android:layout_height="@dimen/_130sdp"
                     app:strokeWidth="0dp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     tools:layout_editor_absoluteX="50dp">
@@ -153,8 +157,8 @@ android:layout_weight="1"
                 </com.google.android.material.card.MaterialCardView>
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/_Believing_in_yourself"
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_120sdp"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_130sdp"
                     app:strokeWidth="0dp"
                     android:layout_weight="1"
                     android:layout_marginStart="@dimen/_10sdp"
@@ -163,7 +167,7 @@ android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:background="@drawable/bg"
+                        android:background="@drawable/believing_in_yourself"
                         android:gravity="center_vertical">
 
 
