@@ -4,48 +4,60 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.quotes.hindcash.databinding.FragmentCategoryBottomSheetBinding
 
-class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
+class CategoryBottomSheetFragment(private val onCategorySelected: (String) -> Unit) : BottomSheetDialogFragment() {
+
+    private var _binding: FragmentCategoryBottomSheetBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category_bottom_sheet_, container, false)
+        // Inflate the layout for this fragment using View Binding
+        _binding = FragmentCategoryBottomSheetBinding.inflate(inflater, container, false)
+        return binding.root
     }
-}
 
-   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dialog = dialog
-        if (dialog != null) {
-            val window = dialog.window
-            window?.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT, // Width is match_parent
-                WindowManager.LayoutParams.MATCH_PARENT  // Height is match_parent (full screen)
-            )
-            window?.setWindowAnimations(android.R.style.Animation_Dialog)
-        }
-        // Set up your view interactions here, for example:
-      //  val categoryItem1 = view.findViewById<View>(R.id.categoryItem1)
-        val categoryItem2 = view.findViewById<View>(R.id.categoryItem2)
-        val categoryItem3 = view.findViewById<View>(R.id.categoryItem3)
 
-        categoryItem1.setOnClickListener {
-            // Handle category 1 click
+        // Set onClick listeners for category selection
+        binding.cvGeneral.setOnClickListener {
+            onCategorySelected("General")
+            dismiss()
         }
 
-        categoryItem2.setOnClickListener {
-            // Handle category 2 click
+        binding.cvReducingAnxiety.setOnClickListener {
+            onCategorySelected("Reducing Anxiety")
+            dismiss()
+        }
+        binding.ivClose.setOnClickListener {
+            dismiss()
+
         }
 
-        categoryItem3.setOnClickListener {
-            // Handle category 3 click
+        binding.cvPersonalGrowth.setOnClickListener {
+            onCategorySelected("Personal Growth")
+            dismiss()
+        }
+
+        binding.cvBelievingInYourself.setOnClickListener {
+            onCategorySelected("Believing in Yourself")
+            dismiss()
+        }
+
+        // Handle closing the bottom sheet
+        binding.ivClose.setOnClickListener {
+            dismiss()
         }
     }
-}
 
-    */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // Prevent memory leaks
+    }
+}

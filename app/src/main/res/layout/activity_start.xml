@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Embark on a journey toward a "
         android:fontFamily="serif"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="@dimen/_18sdp"
         app:layout_constraintBottom_toBottomOf="parent"
