@@ -11,60 +11,177 @@
         app:cardCornerRadius="@dimen/_15sdp"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:paddingBottom="@dimen/_100sdp"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/_100sdp">
 
             <!-- Title of the BottomSheet -->
             <TextView
                 android:id="@+id/bottomSheetTitle"
                 android:layout_width="wrap_content"
+android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25sdp"
                 android:text="Select Category"
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+          />
 
             <!-- Category List -->
             <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_15sdp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/bottomSheetTitle">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/bottomSheetTitle"
+                tools:layout_editor_absoluteX="19dp">
 
                 <!-- Example category items -->
-                <TextView
-                    android:id="@+id/categoryItem1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:padding="12dp"
-                    android:text="Category 1" />
 
-                <TextView
-                    android:id="@+id/categoryItem2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:padding="12dp"
-                    android:text="Category 2" />
 
-                <TextView
-                    android:id="@+id/categoryItem3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:padding="12dp"
-                    android:text="Category 3" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_General"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_120sdp"
+                app:strokeWidth="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                tools:layout_editor_absoluteX="50dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/bg"
+    android:gravity="center_vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="General"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/white"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_40sdp"/>
+
+
+</LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/tv_Reducing_anxiety"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    app:strokeWidth="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:layout_editor_absoluteX="50dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reducing anxiety"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_40sdp"/>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_Personal_growth"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_height="wrap_content"
+                android:text="Personal growth"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                />
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:orientation="horizontal"
+              >
+
+                <!-- Example category items -->
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_120sdp"
+android:layout_weight="1"
+                    android:layout_height="@dimen/_120sdp"
+                    app:strokeWidth="0dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    tools:layout_editor_absoluteX="50dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Growth mindset"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_40sdp"/>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/_Believing_in_yourself"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    app:strokeWidth="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:layout_editor_absoluteX="50dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Believing in yourself"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_40sdp"/>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
