@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.quotes.hindcash"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,13 +19,21 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources=true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+    ndkVersion = "25.2.9519653"
+    externalNativeBuild {
+        ndkBuild {
+            path = file("src/main/jni/Android.mk")
         }
     }
     compileOptions {
@@ -46,7 +54,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation ("com.airbnb.android:lottie:5.2.0")
     testImplementation(libs.junit)
+    implementation("com.google.android.gms:play-services-ads:23.6.0")
+    implementation(project(":nativetemplates"))
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

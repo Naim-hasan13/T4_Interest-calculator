@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             app:cardBackgroundColor="#8BFFFFFF"
             app:strokeWidth="0dp">
 
@@ -104,6 +104,42 @@
                     android:src="@drawable/settings" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_gravity="bottom|end"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:cardBackgroundColor="#8BFFFFFF"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/diamond" />
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
     <!-- ViewPager2 for images or other content -->
@@ -111,36 +147,38 @@
         android:id="@+id/screenshot"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:gravity="center"
         android:background="@drawable/bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_300sdp"
+            android:paddingHorizontal="@dimen/_80sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/animation" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="0dp" />
     </RelativeLayout>
 
-    <!-- RecyclerView to display Shayari items -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/screenshot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     <!-- Bottom buttons like Share, Copy -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cv_native"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -164,7 +202,7 @@
                 <ImageView
                     android:layout_width="@dimen/_23sdp"
                     android:layout_height="@dimen/_23sdp"
-                    android:src="@drawable/share" />
+                    android:src="@drawable/shareapp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -193,4 +231,18 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_native"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp">
+
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/my_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gnt_template_type="@layout/gnt_small_template_view" />
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
