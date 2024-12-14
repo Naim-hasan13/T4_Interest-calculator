@@ -1,4 +1,4 @@
-package com.example.app
+package com.quotes.hindcash
 
 import android.content.Intent
 import android.net.Uri
@@ -20,11 +20,18 @@ class SettingsBottomSheet : BottomSheetDialogFragment() {
         _binding = BottomSheetSettingsBinding.inflate(inflater, container, false)
 
         // Handle "How to install widgets" click
-        binding.tvInstallWidgets.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://example.com/install-widgets"))
-            startActivity(intent)
-        }
+//        binding.tvInstallWidgets.setOnClickListener {
+//            val intent =
+//                Intent(Intent.ACTION_VIEW, Uri.parse("https://example.com/install-widgets"))
+//            startActivity(intent)
+//        }
+        val copyLimit = TinyDB.getString(requireContext(), "play_limit", "0")!!.toInt()
+        if (copyLimit>0){
+            binding.tvCopyLimit.text = "You have $copyLimit copies left."
+        }else{
+            binding.tvCopyLimit.text = "You have reached your limit."
 
+        }
         // Handle "Close" button click
         binding.ivClose.setOnClickListener {
             dismiss()
@@ -36,14 +43,14 @@ class SettingsBottomSheet : BottomSheetDialogFragment() {
         }
 
         // Handle "Help and Feedback" click
-        binding.tvHelpFeedback.setOnClickListener {
-            val emailIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "message/rfc822"
-                putExtra(Intent.EXTRA_EMAIL, arrayOf("support@example.com"))
-                putExtra(Intent.EXTRA_SUBJECT, "Help & Feedback")
-            }
-            startActivity(Intent.createChooser(emailIntent, "Send Email"))
-        }
+//        binding.tvHelpFeedback.setOnClickListener {
+//            val emailIntent = Intent(Intent.ACTION_SEND).apply {
+//                type = "message/rfc822"
+//                putExtra(Intent.EXTRA_EMAIL, arrayOf("support@example.com"))
+//                putExtra(Intent.EXTRA_SUBJECT, "Help & Feedback")
+//            }
+//            startActivity(Intent.createChooser(emailIntent, "Send Email"))
+//        }
 
         // Handle "Rate app" click
         binding.tvRateApp.setOnClickListener {

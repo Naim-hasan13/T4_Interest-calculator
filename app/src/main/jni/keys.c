@@ -6,3 +6,9 @@ JNIEXPORT jstring JNICALL
 Java_com_quotes_hindcash_HomeActivity_Hatbc(JNIEnv *env, jobject thiz) {
     return (*env)->NewStringUTF(env, "mgfdasgjourebbkjhrefhkvfsdgjjjpe");
 }
+
+JNIEXPORT jstring JNICALL
+Java_com_quotes_hindcash_RedeemBottomSheet_Hatbc(JNIEnv *env, jobject thiz) {
+    return (*env)->NewStringUTF(env, "mgfdasgjourebbkjhrefhkvfsdgjjjpe");
+
+}
