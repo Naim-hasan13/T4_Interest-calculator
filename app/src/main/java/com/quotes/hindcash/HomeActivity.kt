@@ -34,6 +34,7 @@ import com.airbnb.lottie.model.KeyPath
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
 import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
@@ -576,7 +577,7 @@ class HomeActivity : AppCompatActivity() {
                         animateProgress(
                             findViewById(R.id.innerCardView)!!,
                             findViewById<MaterialCardView>(R.id.outerCardView)!!.width,
-                            Random.nextLong(15000, 20000),
+                            Random.nextLong(4000, 5000),
                             this
                         )
                     }
@@ -603,7 +604,6 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Insufficient Diamonds", Toast.LENGTH_SHORT).show()
             }
         }
-
 
         shayariAdapter = ShayariAdapter(shayariList)
         binding.viewPager.adapter = shayariAdapter
@@ -633,7 +633,41 @@ class HomeActivity : AppCompatActivity() {
                     handler.postDelayed(this, 16)
                 } else {
                     alertDialog.dismiss()
-                    addPoint()
+                    val isAdsShowable =
+                        TinyDB.getString(this@HomeActivity, "play_limit", "0").toString()
+                            .toInt() % TinyDB.getString(
+                            this@HomeActivity,
+                            "show_ads_after_each",
+                            "0"
+                        ).toString()
+                            .toInt() == 0
+                    if (isAdsShowable) {
+                        if (mAdManagerInterstitialAd != null) {
+                            mAdManagerInterstitialAd?.fullScreenContentCallback =
+                                object : FullScreenContentCallback() {
+                                    override fun onAdDismissedFullScreenContent() {
+                                        if (isApiCallable) {
+                                            isApiCallable = false
+                                            addPoint()
+                                        }
+                                    }
+                                }
+                            mAdManagerInterstitialAd?.show(this@HomeActivity)
+                        } else {
+                            loadInterstitial()
+                            Toast.makeText(
+                                this@HomeActivity,
+                                "Ads not loading, Please wait..",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    } else {
+                        if (isApiCallable) {
+                            isApiCallable = false
+                            addPoint()
+                        }
+                    }
                 }
             }
         })

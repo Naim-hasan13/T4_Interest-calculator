@@ -56,7 +56,7 @@ class SettingsBottomSheet : BottomSheetDialogFragment() {
         binding.tvRateApp.setOnClickListener {
             val rateIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("market://details?id=${requireContext().packageName}")
+                Uri.parse("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             )
             startActivity(rateIntent)
         }
