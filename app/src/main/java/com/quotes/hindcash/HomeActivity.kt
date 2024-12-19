@@ -852,6 +852,7 @@ class HomeActivity : AppCompatActivity() {
                     TinyDB.saveString(this, "balance_show_limit", alldata[14])
                     TinyDB.saveString(this, "balance_withdrawal_limit", alldata[15])
                     TinyDB.saveString(this, "adx_banner", alldata[16])
+                    TinyDB.saveString(this, "adx_app_open", alldata[18])
 
                     if (alldata[3].toString().toInt() >= alldata[14].toInt()) {
                         binding.cvBalance.visibility = View.VISIBLE
