@@ -516,6 +516,7 @@ class HomeActivity : AppCompatActivity() {
         val adapter = ShayariAdapter(shayariList)
         binding.viewPager.adapter = adapter
         binding.viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
+        getUserValue()
 
         // Handle Share button
         binding.cvShare.setOnClickListener {
@@ -569,7 +570,6 @@ class HomeActivity : AppCompatActivity() {
 
         // Handle Copy button
         binding.cvCopy.setOnClickListener {
-            loadInterstitial()
             AlertDialog.Builder(this, R.style.updateDialogTheme).setView(R.layout.popup_copying)
                 .setCancelable(false).create().apply {
                     show()
@@ -642,26 +642,9 @@ class HomeActivity : AppCompatActivity() {
                         ).toString()
                             .toInt() == 0
                     if (isAdsShowable) {
-                        if (mAdManagerInterstitialAd != null) {
-                            mAdManagerInterstitialAd?.fullScreenContentCallback =
-                                object : FullScreenContentCallback() {
-                                    override fun onAdDismissedFullScreenContent() {
-                                        if (isApiCallable) {
-                                            isApiCallable = false
-                                            addPoint()
-                                        }
-                                    }
-                                }
-                            mAdManagerInterstitialAd?.show(this@HomeActivity)
-                        } else {
-                            loadInterstitial()
-                            Toast.makeText(
-                                this@HomeActivity,
-                                "Ads not loading, Please wait..",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                        }
+                        Utils.showLoadingPopUp(this@HomeActivity)
+                        loadInterstitial()
+
                     } else {
                         if (isApiCallable) {
                             isApiCallable = false
@@ -947,10 +930,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        getUserValue()
-    }
+
 
     private fun updateAdMobAppId(adMobAppId: String) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -971,7 +951,7 @@ class HomeActivity : AppCompatActivity() {
             MobileAds.initialize(this@HomeActivity) {
 
             }
-            loadInterstitial()
+
             loadNativeAd()
         }
     }
@@ -986,11 +966,24 @@ class HomeActivity : AppCompatActivity() {
                 override fun onAdFailedToLoad(adError: com.google.android.gms.ads.LoadAdError) {
                     adError.toString().let { Log.d("AdMob", it) }
                     mAdManagerInterstitialAd = null
+                    loadInterstitial()
                 }
 
                 override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
                     Log.d("AdMob", "Ad was loaded.")
+                    Utils.dismissLoadingPopUp()
                     mAdManagerInterstitialAd = interstitialAd
+                    mAdManagerInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdDismissedFullScreenContent() {
+                                if (isApiCallable) {
+                                    isApiCallable = false
+                                    addPoint()
+                                }
+                            }
+                        }
+                    mAdManagerInterstitialAd?.show(this@HomeActivity)
+
                 }
             }
         )

@@ -76,13 +76,17 @@ class MainActivity : AppCompatActivity() {
                                     val intent =
                                         Intent(this@MainActivity, startActivity::class.java)
                                     startActivity(intent)
+                                    finish()
                                 }
                             })
                     }
 
                     override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                         // Called when an app open ad has failed to load.
-                        loadAd(context)
+                        val intent =
+                            Intent(this@MainActivity, startActivity::class.java)
+                        startActivity(intent)
+                        finish()
                         isLoadingAd = false;
                     }
                 })
@@ -102,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                 return
             }
 
-            appOpenAd?.fullScreenContentCallback = object : FullScreenContentCallback() {-
+            appOpenAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     appOpenAd = null
                     isShowingAd = false
@@ -113,7 +117,7 @@ class MainActivity : AppCompatActivity() {
 
                     appOpenAd = null
                     isShowingAd = false
-                    loadAd(this@MainActivity)
+                    onShowAdCompleteListener.onShowAdComplete()
 
                 }
 
